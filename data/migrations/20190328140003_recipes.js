@@ -1,6 +1,21 @@
 
 exports.up = function(knex, Promise) {
+  return knex.schema.createTable('recipes', function (table) {
   
+    table.increments();
+
+    tbl
+      .string('name',255)
+      .notNullable()
+      .unique();
+
+    table
+        .integer('dishId') // the column name in this table (users)
+        .unsigned()
+        .references('id') // primary key in the related (parent) table (roles)
+        .inTable('dishes')
+        .onDelete('CASCADE')
+        .onUpdate('CASCADE');
 };
 
 exports.down = function(knex, Promise) {
