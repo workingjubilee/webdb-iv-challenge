@@ -2,13 +2,13 @@
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('ingredients', function (table) {
 
-  table.increments();
+  table.increments("ID");
 
   table
     .string('name',255)
     .notNullable();
     
-  };
+  })
 };
 
 exports.down = function(knex, Promise) {
