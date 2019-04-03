@@ -34,9 +34,26 @@ table 2 recipes:
   id1: hawaiian; dishId1;
   id2: margherita; dishId1;
 
-the joined table would look like:
-  pizza (id1) : (dishId1) (recipeId1) hawaiian
-  pizza (id1) : (dishId1) (recipeId2) margherita
+  table 3 ingredients:
+
+ingredientName: "gram of butter" (string), quantity (number)
+ = "{quantity} gram of butter"
+OR
+ingredientName: id (key), "butter" (string), unit: "gram" (string), quantity (number) <--- probably?
+ = "{quantity} {unit} of butter"
+ - when saving the ingredients for a **recipe** capture the quantity required for that **ingredient** as a floating number.
+
+table 4 recipes used in ingredients
+multiple ingredients can be used in multiple recipes!!
+  foreignKeys: ingredientId, recipeId
+  local: id, quantity?, unit?
+  many : many
+
+a fully joined table would look like:
+  pizza (id1) : (dishId1) (recipeId1) hawaiian : (recipeId1) : tomatos (ingredientId 1), cheese (ingredientId 2), pineapple (ingredientId 3)
+  pizza (id1) : (dishId1) (recipeId2) margherita : (recipeId2) : tomatos (ingredientId 1), cheese (ingredientId 2), basil (ingredientId4), salt, olive oil
+  Pizza Margherita is a typical Neapolitan pizza, made with San Marzano tomatoes, mozzarella fior di latte, fresh basil, salt and extra-virgin olive oil. -Wikipedia
+
 
 - have a way to manage dishes. A **dish** is something the client wants to cook, like _pizza_ or _tacos_.
 - have a way to manage recipes. A **dish** can have different recipes for tacos, like _tex-mex_ or _granny's_. A **recipe** belongs only to one **dish**.
