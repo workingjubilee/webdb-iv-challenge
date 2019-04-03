@@ -1,9 +1,11 @@
 const express = require('express');
 const helmet = require('helmet');
 const knex = require('knex');
-const db = require("./data/index.js")
 
 const server = express();
+
+server.use(helmet());
+server.use(express.json());
 
 const port = process.env.PORT || 5000;
 

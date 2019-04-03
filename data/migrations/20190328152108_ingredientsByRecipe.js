@@ -20,7 +20,7 @@ exports.up = function(knex, Promise) {
         .integer('ingredients') // the column name in this table (users)
         .unsigned()
         .references('ID') // primary key in the related (parent) table (roles)
-        .inTable('ingredientsID')
+        .inTable('ingredientID')
         .onDelete('CASCADE')
         .onUpdate('CASCADE');
   })
